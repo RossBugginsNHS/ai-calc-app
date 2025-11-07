@@ -66,9 +66,18 @@ Before starting ANY interaction:
 3. **Ask**: "Would you like me to prepare for a handover?"
 4. **If yes**:
    - Create `docs/handovers/handover.md`
-   - Stage and commit: `git add . && git commit -m "Completed [Role] - [timestamp]"`
-   - Tell customer: "Handover prepared. Create new chat context when ready."
-5. **If no**: Continue to next role
+   - **Stage ALL files**: `git add .` (no exceptions - everything must be staged)
+   - **Commit ALL changes**: `git commit -m "Completed [Role] - [timestamp]"`
+   - **Verify commit**: `git log -1 --oneline`
+   - Tell customer: "ALL files staged and committed. You MUST create a new chat window."
+   - **🛑 STOP HERE - Do not continue in this chat**
+   - Refuse any requests to continue
+   - Direct human to create new chat window
+5. **If no**: Continue to next role in same chat
+
+**🛑 CRITICAL: Stage ALL files with `git add .` before committing. After creating handover, this chat MUST end. New chat required.**
+
+---
 
 ## Creating Artifacts
 

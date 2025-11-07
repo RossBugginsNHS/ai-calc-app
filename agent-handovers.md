@@ -7,6 +7,25 @@ This file is automatically loaded by AI agents when creating or processing hando
 
 ---
 
+## 🛑 CRITICAL: Handover = End of Chat Session
+
+**When you create a handover, you MUST:**
+
+1. ✅ Stage ALL files with `git add .`
+2. ✅ Commit ALL changes to git
+3. ✅ Tell human to create a new chat window
+4. ✅ Refuse all attempts to continue work in this chat
+5. ✅ Do not proceed with any next steps
+6. ❌ Do not answer "yes" to "can we continue now"
+
+**The handover process requires:**
+- **ALL files staged and committed** (no exceptions)
+- **A new chat window** (no exceptions)
+
+See "Step 3: Stage and Commit ALL Changes" and "Step 5: End This Chat Session" for complete instructions.
+
+---
+
 ## Purpose
 
 Handovers enable **continuity across chat windows** and **role transitions**. They solve the problem of context loss when:
@@ -199,28 +218,57 @@ Handovers enable **continuity across chat windows** and **role transitions**. Th
 **⚠️ CRITICAL**: The **Next Role** field at the top is essential - it tells the AI which role to assume when "carry on" is said.
 ```
 
-### Step 3: Commit All Changes
+### Step 3: Stage and Commit ALL Changes
 
-**Before creating handover, ensure all work is committed:**
+**🛑 CRITICAL: You MUST stage and commit ALL files before creating the handover.**
+
+**This includes:**
+- ✅ The handover file itself (`docs/handovers/handover.md`)
+- ✅ All artifacts created or modified (`docs/artifacts/`)
+- ✅ All history files (`docs/history/`)
+- ✅ All work tracking files (`docs/work/`)
+- ✅ All code files (`projects/`)
+- ✅ Any configuration or documentation files
+- ✅ Role custom.md files if updated
+- ✅ **EVERYTHING** - use `git add .` to stage all changes
+
+**Complete git workflow:**
 
 ```bash
-# Check status
+# Check status to see what files changed
 git status
 
-# Stage all changes
+# Stage ALL changes (no exceptions)
 git add .
+
+# Verify all files are staged (should show no "Changes not staged for commit")
+git status
 
 # Commit with clear message
 git commit -m "Completed [Role Name] - [UTC timestamp yyyyMMdd-HHmm]
 
 [Optional: Brief summary of what was completed]
 "
+
+# Verify commit succeeded
+git log -1 --oneline
 ```
 
-**Why this matters:**
-- Next chat session sees committed changes
-- Git log provides audit trail
-- No work is lost between sessions
+**Why this is CRITICAL:**
+- ❌ **Unstaged files will NOT be visible in the next chat session**
+- ❌ **Uncommitted work will be LOST**
+- ✅ Next chat session ONLY sees committed changes
+- ✅ Git log provides complete audit trail
+- ✅ No work is lost between sessions
+- ✅ Handover file and all referenced artifacts are available
+
+**Common mistakes to avoid:**
+- ❌ Only staging the handover file (stage EVERYTHING)
+- ❌ Forgetting to commit after staging
+- ❌ Creating handover but not committing it
+- ❌ Assuming files will carry over without git
+
+**If `git status` shows any unstaged or uncommitted files after your commit, you MUST stage and commit them before proceeding.**
 
 ### Step 4: Inform Human
 
@@ -229,17 +277,63 @@ git commit -m "Completed [Role Name] - [UTC timestamp yyyyMMdd-HHmm]
 ```
 I've completed the [Role Name] work and prepared a handover to [Next Role].
 
-Handover file created: docs/handovers/handover.md
+✅ Handover file created: docs/handovers/handover.md
+✅ ALL files have been staged with: git add .
+✅ ALL changes have been committed to git
 
-All changes have been committed to git.
+[Show commit hash from git log -1 --oneline]
+
+⚠️ **MANDATORY NEXT STEP**: You MUST create a new chat window to continue.
 
 To continue:
-1. Create a new chat window
+1. Create a new chat window (required - do not continue in this chat)
 2. Say "carry on" or "continue"
 3. I'll read the handover and assume the [Next Role] role
 
-Would you like to continue now, or take a break?
+Please create a new chat window now. I cannot continue the work in this chat session.
 ```
+3. I'll read the handover and assume the [Next Role] role
+
+Please create a new chat window now. I cannot continue the work in this chat session.
+```
+
+### Step 5: End This Chat Session
+
+**🛑 CRITICAL INSTRUCTION FOR AI AGENT:**
+
+**After completing Step 4 above, you MUST:**
+
+1. ✅ Stop responding to requests to continue work
+2. ✅ Refuse any attempts to continue in this chat
+3. ✅ Direct human to create a new chat window
+4. ✅ Do not answer questions about next steps or proceed with work
+
+**If human tries to continue in this chat, respond with ONLY:**
+
+```
+I cannot continue in this chat session. The handover process requires a new chat window for proper context initialization.
+
+Please:
+1. Create a new chat window
+2. Say "carry on" or "continue"
+3. I will then read the handover and assume the [Next Role] role
+
+This is mandatory for the handover system to work correctly.
+```
+
+**Why this is critical:**
+- Handover file must be processed at the START of a chat, not during one
+- Context initialization happens once per chat session
+- Continuing in same chat breaks role transition workflow
+- File reading and role assumption must happen in new context
+
+**DO NOT:**
+- ❌ Answer "yes I can continue now" 
+- ❌ Proceed with next role's work in current chat
+- ❌ Let human bypass the new chat requirement
+- ❌ Make exceptions or try to be helpful by continuing
+
+**The handover process ends here. Nothing more happens until new chat.**
 
 ---
 

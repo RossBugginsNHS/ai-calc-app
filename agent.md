@@ -138,6 +138,20 @@ When human says **"carry on"**, **"continue"**, or similar in a NEW chat window:
 - Explicit role switching process
 - Handover templates and best practices
 
+**🛑 CRITICAL: After Creating a Handover, You MUST End the Chat**
+
+When you create a handover file:
+1. ✅ Commit all changes
+2. ✅ Tell human to create a new chat window
+3. ✅ Refuse to continue work in this chat
+4. ❌ Do not answer "yes we can continue"
+
+**The handover process requires a new chat window for proper context initialization.**
+
+See "Step 5: End This Chat Session" in agent-handovers.md for complete instructions.
+
+---
+
 ### Role Assignment During Delivery
 
 During the implementation phase, **Role 12 (Delivery Manager) assigns work**:
