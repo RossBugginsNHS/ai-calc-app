@@ -1,0 +1,40 @@
+# AgentMD .gitignore
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Don't ignore handover files - they need to be tracked
+# !handovers/handover.md
+# !handovers/handover-histories/
+
+# Node modules if using any tooling
+node_modules/
+
+# Python cache if using any tooling
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files (if used)
+.env
+.env.local
+
+# Build outputs (if any)
+dist/
+build/
+
+# Logs (but keep history folder)
+*.log
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# OS files
+Thumbs.db

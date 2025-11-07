@@ -1,0 +1,10 @@
+{
+  "containerEnv": {
+    "GITHUBMONITOR": "false",
+    "MAKECONFIG": "true",
+    "SHOWWELCOME": "true",
+    "UPDATEFROMTEMPLATE": "false"
+  },
+  "image": "ghcr.io/nhsdigital/nhs-notify-devcontainer-loaded:1.0.17",
+  "name": "ConceptShipAI"
+}
