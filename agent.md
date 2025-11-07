@@ -427,12 +427,22 @@ Delivery Manager (12)
 
 ## Work Tracking System
 
-**📖 See [agent-work-tracking.md](./agent-work-tracking.md) for complete work tracking documentation**, including:
+**� CRITICAL: Work tracking starts during PLANNING phase, not just delivery**
+
+**Planning roles (1-11) create features and stories in `docs/work/` as they work:**
+- **Business Analyst**: Create initial features from business requirements
+- **Requirements Engineer**: Break features into user stories with acceptance criteria
+- **Specialist roles (3-11)**: Refine stories, add technical details
+
+**By end of planning, `docs/work/features/todo/` should be populated and ready for implementation.**
+
+**�📖 See [agent-work-tracking.md](./agent-work-tracking.md) for complete work tracking documentation**, including:
 - When to use work tracking (client projects vs template development)
+- **Planning role responsibilities** (creating features and stories during planning)
 - System structure (features, stories, backlog, assignments)
 - ID format and numbering (00001-name pattern)
 - Work item lifecycle (backlog → todo → in-progress → done)
-- Role responsibilities (Delivery Manager primary, implementation roles update)
+- Role responsibilities (All planning roles contribute, Delivery Manager manages)
 - Assignment process and multi-role collaboration
 - Audit log standards and format
 - Lean handovers with work tracking (reference by ID)

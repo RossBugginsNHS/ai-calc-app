@@ -22,7 +22,7 @@ The work tracking system provides **structured feature and story management** fo
 
 ## When to Use Work Tracking
 
-### ✅ USE for Client Projects
+### ✅ USE for Client Projects - Starting from Planning Phase
 
 **Use work tracking when:**
 - Helping a customer plan/build THEIR software project using ConceptShipAI
@@ -30,6 +30,19 @@ The work tracking system provides **structured feature and story management** fo
 - Working on ongoing delivery that needs progress tracking
 - Managing multiple implementation roles (20-22)
 - Tracking work across multiple sprints/iterations
+
+**🔴 CRITICAL: Work tracking starts DURING PLANNING, not just during delivery**
+
+**Planning roles (1-11) should create features and stories as they work:**
+- **Role 1 (Business Analyst)**: Identify initial features from business requirements
+- **Role 2 (Requirements Engineer)**: Break features into user stories with acceptance criteria
+- **Role 3-11 (Specialist roles)**: Refine features/stories, add technical details
+- **Role 12 (Delivery Manager)**: Prioritize and assign stories for implementation
+
+**By the time planning is complete, `docs/work/` should contain:**
+- Features in `docs/work/features/todo/` ready for implementation
+- User stories with acceptance criteria
+- Clear priorities and dependencies
 
 ### ❌ DO NOT USE for ConceptShipAI Development
 
@@ -186,20 +199,82 @@ Shows work items with activity in the last 30 days.
 
 ## Role Responsibilities
 
+### Planning Roles (1-11) - Creating Features and Stories
+
+**🔴 CRITICAL: Planning roles should populate `docs/work/` during the planning phase**
+
+#### Role 1: Business Analyst
+
+**Work tracking responsibilities:**
+
+1. **Identify Initial Features**
+   - Review business requirements and identify high-level features
+   - Create feature files in `docs/work/backlog/` or `docs/work/features/todo/`
+   - Format: `[id]-[kebab-case-name]/feature.md`
+   - Link features to business requirements (BR-xxx)
+
+2. **Feature Content**
+   - Feature title and description
+   - Business value and objectives
+   - Affected stakeholders
+   - Success criteria
+   - Initial priority estimate
+
+**Example**: After creating business requirements, create:
+- `docs/work/features/todo/00001-user-authentication/feature.md`
+- `docs/work/features/todo/00002-user-profile-management/feature.md`
+
+#### Role 2: Requirements Engineer
+
+**Work tracking responsibilities:**
+
+1. **Break Features into User Stories**
+   - For each feature in `docs/work/features/todo/`, create user stories
+   - Location: `docs/work/features/todo/[feature-id]/stories/[story-id]-story.md`
+   - Link stories to functional requirements (FR-xxx)
+
+2. **Story Content**
+   - User story format: "As a [user], I want [goal], so that [benefit]"
+   - Acceptance criteria (testable)
+   - Dependencies on other stories
+   - Priority and estimated complexity
+
+**Example**: For feature 00001, create:
+- `docs/work/features/todo/00001-user-authentication/stories/00042-story.md` (login form)
+- `docs/work/features/todo/00001-user-authentication/stories/00043-story.md` (password reset)
+
+#### Roles 3-11: Specialist Roles
+
+**Work tracking responsibilities:**
+
+1. **Refine Existing Features/Stories**
+   - Add specialist perspective to stories
+   - Add technical details, security considerations, API specs, etc.
+   - Update audit logs with refinements
+
+2. **Create Additional Stories**
+   - If specialist work reveals new stories, create them
+   - Example: Security Architect adds "implement OAuth 2.0" story
+
+**All specialist roles should reference work items in their artifacts:**
+- System Architect: Link architecture decisions to features
+- Security Architect: Link security controls to stories
+- API Designer: Link API endpoints to stories
+- UX Designer: Link wireframes/mockups to stories
+
 ### Delivery Manager (Role 12)
 
 **Primary work tracking responsibilities:**
 
 1. **Backlog Management**
-   - Create feature files in `docs/work/backlog/`
-   - Refine features and move to `features/todo/`
+   - Review and refine features created by planning roles
+   - Move features between backlog/todo/in-progress/done
    - Prioritize features
 
-2. **Story Creation**
-   - Break features into user stories
-   - Write acceptance criteria
-   - Estimate story size/complexity
-   - Move stories to `todo` status
+2. **Story Refinement**
+   - Review stories created by Requirements Engineer
+   - Add estimates, priorities, dependencies
+   - Ensure stories have clear acceptance criteria
 
 3. **Assignment Management**
    - Update `docs/work/assignments.md`
